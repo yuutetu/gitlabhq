@@ -2,6 +2,7 @@ require 'sidekiq/web'
 require 'api/api'
 
 Gitlab::Application.routes.draw do
+  get "coverage/show"
   #
   # Search
   #
@@ -194,6 +195,7 @@ Gitlab::Application.routes.draw do
       resources :compare,   only: [:index, :create]
       resources :blame,     only: [:show], constraints: {id: /.+/}
       resources :network,   only: [:show], constraints: {id: /(?:[^.]|\.(?!json$))+/, format: /json/}
+      resources :coverage,  only: [:show], constraints: {id: /.+/}
       resources :graphs,    only: [:show], constraints: {id: /(?:[^.]|\.(?!json$))+/, format: /json/}
 
       match "/compare/:from...:to" => "compare#show", as: "compare", via: [:get, :post], constraints: {from: /.+/, to: /.+/}

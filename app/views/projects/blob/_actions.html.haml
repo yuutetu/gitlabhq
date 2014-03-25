@@ -1,5 +1,6 @@
 .btn-group.tree-btn-group
   -# only show edit link for text files
+  = link_to "coverage", project_coverage_path(@project, @id), class: "btn btn-small"
   - if @blob.text?
     - if allowed_tree_edit?
       = link_to "edit", project_edit_tree_path(@project, @id), class: "btn btn-small"
