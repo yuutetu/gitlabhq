@@ -9,9 +9,29 @@
           = @blob.name
           %small= number_to_human_size @blob.size
         %span.options= render "projects/blob/actions"
-      - if @blob.text?
-        = render "projects/blob/text", blob: @blob
-      - elsif @blob.image?
-        = render "projects/blob/image", blob: @blob
-      - else
-        = render "projects/blob/download", blob: @blob
+      .file-content.coverage
+        %table
+          - @blob.data.lines.to_a.size.times do |index|
+            %tr
+              - offset = defined?(first_line_number) ? first_line_number : 1
+              - i = index + offset
+              %td
+                = @coverage[index]
+              %td.lines.coverage-numbers
+                = i
+              - case @coverage[index]
+                - when 0
+                  %td.lines.non_spec
+                    %pre
+                      :erb
+                        <%= @blob.data.lines.to_a[index] %>
+                - when Integer
+                  %td.lines.more_than_one_spec
+                    %pre
+                      :erb
+                        <%= @blob.data.lines.to_a[index] %>
+                - else
+                  %td.lines
+                    %pre
+                      :erb
+                        <%= @blob.data.lines.to_a[index] %>

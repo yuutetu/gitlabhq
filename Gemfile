@@ -49,7 +49,7 @@ gem "gitlab-linguist", "~> 3.0.0", require: "linguist"
 # API
 gem "grape", "~> 0.6.1"
 # Replace with rubygems when nesteted entities get released
-gem "grape-entity", "~> 0.4.1", ref: 'd904381c951e86250c3f44213b349a3dd8e83fb1', git: 'https://github.com/intridea/grape-entity.git' 
+gem "grape-entity", "~> 0.4.1", ref: 'd904381c951e86250c3f44213b349a3dd8e83fb1', git: 'https://github.com/intridea/grape-entity.git'
 gem 'rack-cors', require: 'rack/cors'
 
 # Email validation
@@ -82,7 +82,7 @@ gem "seed-fu"
 
 # Markdown to HTML
 gem "redcarpet",     "~> 2.2.2"
-gem "github-markup", "~> 0.7.4", require: 'github/markup', git: 'https://github.com/gitlabhq/markup.git', ref: '61ade389c1e1c159359338f570d18464a44ddbc4' 
+gem "github-markup", "~> 0.7.4", require: 'github/markup', git: 'https://github.com/gitlabhq/markup.git', ref: '61ade389c1e1c159359338f570d18464a44ddbc4'
 
 # Asciidoc to HTML
 gem  "asciidoctor"
@@ -149,6 +149,9 @@ gem "rack-attack"
 
 # Ace editor
 gem 'ace-rails-ap'
+
+# HTTP client
+gem 'faraday'
 
 gem "sass-rails"
 gem "coffee-rails"

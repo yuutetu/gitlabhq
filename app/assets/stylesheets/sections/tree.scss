@@ -107,6 +107,27 @@
       border-left: 1px solid #DDD;
     }
   }
+
+  .coverage {
+    img.avatar {
+      border: 0 none;
+      float: none;
+      margin: 0;
+      padding: 0;
+    }
+    td.coverage-commit {
+      background: #f9f9f9;
+      min-width: 350px;
+    }
+    td.coverage-numbers {
+      pre {
+        color: #AAA;
+        white-space: pre;
+      }
+      background: #f1f1f1;
+      border-left: 1px solid #DDD;
+    }
+  }
 }
 
 .tree-btn-group {

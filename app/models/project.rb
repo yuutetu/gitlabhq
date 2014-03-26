@@ -34,7 +34,8 @@ class Project < ActiveRecord::Base
 
   attr_accessible :name, :path, :description, :issues_tracker, :label_list,
     :issues_enabled, :wall_enabled, :merge_requests_enabled, :snippets_enabled, :issues_tracker_id,
-    :wiki_enabled, :visibility_level, :import_url, :last_activity_at, as: [:default, :admin]
+    :wiki_enabled, :visibility_level, :import_url, :last_activity_at,
+    :coverage_enabled, :coverage_url, :coverage_base_path, :coverage_parse_type, as: [:default, :admin]
 
   attr_accessible :namespace_id, :creator_id, as: :admin
 
@@ -551,5 +552,15 @@ class Project < ActiveRecord::Base
   def change_head(branch)
     gitlab_shell.update_repository_head(self.path_with_namespace, branch)
     reload_default_branch
+  end
+
+  def coverage_url_with_commit_id commit_id
+    begin
+      meta_url = self.coverage_url
+      meta_url["{commit_id}"] = commit_id
+    rescue IndexError
+    end
+    p meta_url
+    meta_url
   end
 end
