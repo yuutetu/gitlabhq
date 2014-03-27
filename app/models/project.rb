@@ -560,7 +560,6 @@ class Project < ActiveRecord::Base
       meta_url["{commit_id}"] = commit_id
     rescue IndexError
     end
-    p meta_url
     meta_url
   end
 end
