@@ -2,7 +2,6 @@ require 'sidekiq/web'
 require 'api/api'
 
 Gitlab::Application.routes.draw do
-  get "coverage/show"
   #
   # Search
   #
